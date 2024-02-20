@@ -1,25 +1,23 @@
-const imageURLInput = document.getElementById('image-url');
-const addImageButton = document.getElementById('add-image');
-const imageGallery = document.getElementById('image-gallery');
+const search = document.querySelector(".search-box input"),
+      images = document.querySelectorAll(".image-box");
 
-addImageButton.addEventListener('click', () => {
-    const imageUrl = imageURLInput.value;
-    if (!imageUrl) {
-        return;
+search.addEventListener("keyup", e =>{
+    if(e.key == "Enter"){
+        let searcValue = search.value,
+            value = searcValue.toLowerCase();
+            images.forEach(image =>{
+                if(value === image.dataset.name){ //matching value with getting attribute of images
+                    return image.style.display = "block";
+                }
+                image.style.display = "none";
+         });
     }
-
-    // إنشاء عنصر الصورة
-    const image = document.createElement('img');
-    image.src = imageUrl;
-    image.alt = 'صورة';
-    image.style.cursor = 'pointer';
-
-    // إضافة الصورة إلى معرض الصور
-    imageGallery.appendChild(image);
-
-    // إضافة حدث عرض الصورة
-    image.addEventListener('click', () => {
-        // فتح صفحة جديدة لعرض الصورة
-        window.open(imageUrl, '_blank');
-    });
 });
+
+search.addEventListener("keyup", () =>{
+    if(search.value != "") return;
+
+    images.forEach(image =>{
+        image.style.display = "block";
+    })
+})
