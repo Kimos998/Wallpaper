@@ -1,17 +1,25 @@
-function addImage() {
-    var imageUrl = document.getElementById("image-url").value;
+const imageURLInput = document.getElementById('image-url');
+const addImageButton = document.getElementById('add-image');
+const imageGallery = document.getElementById('image-gallery');
 
-    if (imageUrl.trim() !== "") {
-        var imageElement = document.createElement("img");
-        imageElement.src = imageUrl;
-        imageElement.onclick = function() {
-            viewImage(imageUrl);
-        };
-
-        document.getElementById("gallery").appendChild(imageElement);
+addImageButton.addEventListener('click', () => {
+    const imageUrl = imageURLInput.value;
+    if (!imageUrl) {
+        return;
     }
-}
 
-function viewImage(imageUrl) {
-    window.open("view_image.html?url=" + encodeURIComponent(imageUrl), "_blank");
-}
+    // إنشاء عنصر الصورة
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = 'صورة';
+    image.style.cursor = 'pointer';
+
+    // إضافة الصورة إلى معرض الصور
+    imageGallery.appendChild(image);
+
+    // إضافة حدث عرض الصورة
+    image.addEventListener('click', () => {
+        // فتح صفحة جديدة لعرض الصورة
+        window.open(imageUrl, '_blank');
+    });
+});
