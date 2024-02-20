@@ -1,18 +1,35 @@
-.upload-container {
-    text-align: center;
-    margin-bottom: 20px;
+body {
+    font-family: Arial, sans-serif;
 }
 
-.gallery-container {
+#main-container {
+    width: 500px;
+    margin: 20px auto;
+}
+
+#image-url {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#add-image {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#image-gallery {
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
-.gallery-container img {
+#image-gallery img {
     width: 200px;
     height: 200px;
     margin: 10px;
-    object-fit: cover;
-    cursor: pointer;
+    border: 1px solid #ccc;
 }
